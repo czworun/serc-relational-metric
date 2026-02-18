@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use SERC or this repository in your research, please cite it as below."
+title: "SERC: A Relational Equilibrium Framework for Large-Scale AI Systems"
+authors:
+  - family-names: "Papiernik"
+    given-names: "Leszek"
+version: "0.1.0"
+date-released: "2026-02-18"
+doi: ""
+url: "https://github.com/<your-username>/serc-relational-metric"
+abstract: >
+  SERC (Structure–Energy–Resonance–Coherence) is a relational metric and
+  geometric framework for modeling internal equilibrium, coherence, and
+  dynamical stability in complex systems, including large-scale AI models.
+  This repository provides the mathematical formulation, simulation code,
+  and tools for analyzing relational tension, internal time, and equilibrium
+  trajectories within the SERC simplex.
+keywords:
+  - SERC
+  - relational metric
+  - simplex geometry
+  - coherence functional
+  - internal time
+  - AI stability
+  - complex systems
