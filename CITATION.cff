@@ -6,7 +6,7 @@ authors:
     given-names: "Leszek"
 version: "0.1.0"
 date-released: "2026-02-18"
-doi: ""
+doi: "10.5281/zenodo.18685547"
 url: "https://github.com/<your-username>/serc-relational-metric"
 abstract: >
   SERC (Structure–Energy–Resonance–Coherence) is a relational metric and
