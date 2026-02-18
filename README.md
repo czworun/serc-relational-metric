@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1160996393.svg)](https://doi.org/10.5281/zenodo.18685546)
+
 # SERC: Relational Metric Framework
 
 **SERC (Structure–Energy–Resonance–Coherence)** is a relational metric and geometric framework for modeling internal equilibrium, coherence, and dynamical stability in complex systems, including large-scale AI models.  
