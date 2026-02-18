@@ -1,0 +1,43 @@
+<svg width="900" height="300" viewBox="0 0 900 300"
+     xmlns="http://www.w3.org/2000/svg" fill="none">
+
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="sercGradient" x1="0" y1="0" x2="900" y2="0">
+      <stop offset="0%" stop-color="#4A90E2"/>
+      <stop offset="50%" stop-color="#7B61FF"/>
+      <stop offset="100%" stop-color="#50E3C2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Tetrahedron (left side) -->
+  <line x1="150" y1="40"  x2="40"  y2="240" stroke="url(#sercGradient)" stroke-width="3"/>
+  <line x1="150" y1="40"  x2="260" y2="240" stroke="url(#sercGradient)" stroke-width="3"/>
+  <line x1="40"  y1="240" x2="260" y2="240" stroke="url(#sercGradient)" stroke-width="3"/>
+
+  <!-- Internal edges -->
+  <line x1="150" y1="40"  x2="150" y2="150" stroke="url(#sercGradient)" stroke-width="3"/>
+  <line x1="40"  y1="240" x2="150" y2="150" stroke="url(#sercGradient)" stroke-width="3"/>
+  <line x1="260" y1="240" x2="150" y2="150" stroke="url(#sercGradient)" stroke-width="3"/>
+
+  <!-- Vertices -->
+  <circle cx="150" cy="40"  r="6" fill="url(#sercGradient)"/>
+  <circle cx="40"  cy="240" r="6" fill="url(#sercGradient)"/>
+  <circle cx="260" cy="240" r="6" fill="url(#sercGradient)"/>
+  <circle cx="150" cy="150" r="6" fill="url(#sercGradient)"/>
+
+  <!-- Zero Point P0 -->
+  <circle cx="150" cy="185" r="4" fill="url(#sercGradient)"/>
+
+  <!-- Labels -->
+  <text x="150" y="25"  font-size="28" text-anchor="middle" font-family="Inter, sans-serif" fill="url(#sercGradient)">S</text>
+  <text x="25"  y="265" font-size="28" text-anchor="middle" font-family="Inter, sans-serif" fill="url(#sercGradient)">E</text>
+  <text x="275" y="265" font-size="28" text-anchor="middle" font-family="Inter, sans-serif" fill="url(#sercGradient)">R</text>
+  <text x="150" y="175" font-size="28" text-anchor="middle" font-family="Inter, sans-serif" fill="url(#sercGradient)">C</text>
+
+  <!-- Horizontal SERC text -->
+  <text x="420" y="170" font-size="96" font-family="Inter, sans-serif" font-weight="600" fill="url(#sercGradient)">
+    SERC
+  </text>
+
+</svg>
