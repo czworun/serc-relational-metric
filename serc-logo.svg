@@ -1,0 +1,33 @@
+<svg width="512" height="512" viewBox="0 0 512 512" 
+     xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1A1A1A">
+
+  <!-- Edges of the tetrahedron -->
+  <line x1="256" y1="60"  x2="80"  y2="380" stroke-width="3"/>
+  <line x1="256" y1="60"  x2="432" y2="380" stroke-width="3"/>
+  <line x1="80"  y1="380" x2="432" y2="380" stroke-width="3"/>
+
+  <!-- Internal edges (projection of 3D tetrahedron) -->
+  <line x1="256" y1="60"  x2="256" y2="200" stroke-width="3"/>
+  <line x1="80"  y1="380" x2="256" y2="200" stroke-width="3"/>
+  <line x1="432" y1="380" x2="256" y2="200" stroke-width="3"/>
+
+  <!-- Vertices -->
+  <circle cx="256" cy="60"  r="6" fill="#1A1A1A"/>
+  <circle cx="80"  cy="380" r="6" fill="#1A1A1A"/>
+  <circle cx="432" cy="380" r="6" fill="#1A1A1A"/>
+  <circle cx="256" cy="200" r="6" fill="#1A1A1A"/>
+
+  <!-- Zero Point P0 -->
+  <circle cx="256" cy="240" r="4" fill="#1A1A1A"/>
+
+  <!-- Labels -->
+  <text x="256" y="45"  font-size="32" text-anchor="middle" font-family="Inter, sans-serif">S</text>
+  <text x="60"  y="405" font-size="32" text-anchor="middle" font-family="Inter, sans-serif">E</text>
+  <text x="452" y="405" font-size="32" text-anchor="middle" font-family="Inter, sans-serif">R</text>
+  <text x="256" y="225" font-size="32" text-anchor="middle" font-family="Inter, sans-serif">C</text>
+
+  <!-- SERC label -->
+  <text x="256" y="480" font-size="48" text-anchor="middle" 
+        font-family="Inter, sans-serif" font-weight="600">SERC</text>
+
+</svg>
