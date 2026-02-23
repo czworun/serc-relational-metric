@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{bm}
+
+\geometry{margin=1in}
+
+% --- Theorem environments ---
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+% --- Title ---
+\title{\textbf{SERC v2.1 -- Mathematical Foundations}}
+\author{Leszek Papiernik}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\large Stability of Relational Dynamics on the Simplex
+\end{center}
+
+\vspace{1em}
+
+\begin{abstract}
+This document provides the mathematical foundations of the SERC framework.
+We analyze the geometry of the 3-simplex, the Gram metric $G = 4I - J$,
+the projected gradient flow, and prove global asymptotic stability of the
+relational equilibrium $P_0 = \tfrac14 \mathbf{1}$.
+We also derive the exponential relaxation rate and interpret the results
+in the context of LLM guardrails.
+\end{abstract}
+
+\section{Stability of Relational Dynamics on the Simplex}
+\label{sec:stability}
+
+\subsection{Setup}
+
+Let $\Delta^3 \subset \mathbb{R}^4$ denote the standard 3-simplex:
+\begin{equation}
+  \Delta^3 = \bigl\{ Z \in \mathbb{R}^4_{\geq 0} \;\big|\; \mathbf{1}^\top Z = 1 \bigr\}.
+\end{equation}
+The tangent space at any interior point is
+\begin{equation}
+  T\Delta^3 = \bigl\{ v \in \mathbb{R}^4 \;\big|\; \mathbf{1}^\top v = 0 \bigr\},
+\end{equation}
+with orthogonal projector onto $T\Delta^3$:
+\begin{equation}
+  P = I_4 - \tfrac{1}{4}\,\mathbf{1}\mathbf{1}^\top.
+\end{equation}
+
+The \emph{relational tension functional} is
+\begin{equation}
+  \Omega(Z) = \tfrac{1}{2}\,Z^\top G Z,
+  \qquad G = 4I_4 - J_4,
+\end{equation}
+where $J_4 = \mathbf{1}\mathbf{1}^\top$. Its gradient is $\nabla\Omega(Z) = GZ$.
+
+\subsection{Spectral Analysis}
+
+\begin{lemma}[Spectrum of $G$ on $T\Delta^3$]
+\label{lem:spectrum}
+The matrix $G = 4I_4 - J_4$ has eigenvalues $\{0, 4, 4, 4\}$.
+The zero eigenvalue corresponds to eigenvector $v_0 = \tfrac{1}{2}\mathbf{1}$,
+which is orthogonal to $T\Delta^3$.
+The restriction $G|_{T\Delta^3}$ is positive definite with
+$\lambda_{\min}(G|_{T\Delta^3}) = 4$.
+\end{lemma}
+
+\begin{proof}
+Direct computation: $G\mathbf{1} = (4I_4 - J_4)\mathbf{1} = 4\mathbf{1} - 4\mathbf{1} = 0$.
+For any $v \perp \mathbf{1}$ (i.e.\ $v \in T\Delta^3$):
+$Gv = 4v - J_4 v = 4v - (\mathbf{1}^\top v)\mathbf{1} = 4v$.
+Hence $G|_{T\Delta^3} = 4I|_{T\Delta^3}$.
+\end{proof}
+
+\subsection{Projected Gradient Flow}
+
+Define the \emph{projected gradient flow} on $\Delta^3$:
+\begin{equation}
+  \dot{Z} = -P\,\nabla\Omega(Z) = -PGZ.
+  \label{eq:flow}
+\end{equation}
+Since $P$ projects onto $T\Delta^3$ and $\mathbf{1}^\top Z(0) = 1$, we have
+$\mathbf{1}^\top\dot{Z} = 0$ for all $t$, so $Z(t) \in \Delta^3$ for all $t \geq 0$.
+
+\begin{theorem}[Lyapunov Stability of $P_0$]
+\label{thm:lyapunov}
+The point $P_0 = \tfrac{1}{4}\mathbf{1}$ is the unique equilibrium of \eqref{eq:flow}
+in $\Delta^3$, and is globally asymptotically stable.
+$\Omega$ is a Lyapunov function for this flow.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: $\Omega$ is non-increasing.}
+\begin{equation}
+  \frac{d}{dt}\Omega(Z(t))
+  = \nabla\Omega(Z)^\top \dot{Z}
+  = (GZ)^\top(-PGZ)
+  = -(GZ)^\top P(GZ).
+\end{equation}
+Let $w = GZ$. Since $P$ is an orthogonal projector, $w^\top Pw = \|Pw\|^2 \ge 0$.
+Thus $\dot{\Omega} \le 0$, with equality iff $Pw = 0$.
+
+\textbf{Step 2: Unique equilibrium.}
+$\dot Z = 0$ iff $PGZ = 0$, i.e.\ $GZ = c\mathbf{1}$.
+Write $Z = P_0 + v$ with $v \in T\Delta^3$.
+Then $GZ = Gv$ and $Gv = c\mathbf{1}$.
+But $Gv \in T\Delta^3$ and $\mathbf{1} \perp T\Delta^3$,
+so $c = 0$ and $Gv = 0$.
+Since $G|_{T\Delta^3} = 4I$, we get $v = 0$.
+
+\textbf{Step 3: Asymptotic stability.}
+$\Omega(Z) \ge 0$ with equality only at $P_0$.
+LaSalle's invariance principle gives global asymptotic stability.
+\end{proof}
+
+\begin{lemma}[Quadratic lower bound]
+\label{lem:quadratic}
+For $Z \in \Delta^3$ and $v = Z - P_0 \in T\Delta^3$:
+\begin{equation}
+  \|PGZ\|^2 = 16\|v\|^2 = 32\,\Omega(Z).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Since $Gv = 4v$ on $T\Delta^3$, we have $\|Gv\|^2 = 16\|v\|^2$.
+Also $\Omega(Z) = \tfrac12 v^\top Gv = 2\|v\|^2$.
+\end{proof}
+
+\begin{corollary}[Exponential Relaxation Rate]
+Along trajectories of \eqref{eq:flow}:
+\begin{equation}
+  \Omega(Z(t)) \le \Omega(Z(0))\,e^{-32t}.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+From the previous lemma:
+\begin{equation}
+  \dot\Omega = -\|PGZ\|^2 = -32\,\Omega(Z).
+\end{equation}
+Integrating gives the result.
+\end{proof}
+
+\subsection{Interpretation for LLM Guardrails}
+
+Under the ideal flow, $\Omega(Z(t))$ decreases monotonically to zero.
+Actual LLM trajectories follow a discrete perturbed update:
+\begin{equation}
+  Z_{t+1} = Z_t + \Delta_t.
+\end{equation}
+
+Define the relational anomaly:
+\begin{equation}
+  a_t = \Omega(Z_{t+1}) - \Omega(Z_t).
+\end{equation}
+
+Healthy dynamics: $a_t < 0$.  
+Pathology: sustained $a_t > 0$.
+
+Guardrail condition $\Omega_{\text{mean}}(W) > \theta$
+detects windows where $\sum a_t > 0$.
+
+\end{document}
