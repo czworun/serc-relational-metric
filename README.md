@@ -69,7 +69,7 @@ serc-relational-metric/
 ### Installation
 
 ```bash
-git clone https://github.com/<your-username>/serc-relational-metric
+git clone https://github.com/czworun/serc-relational-metric
 cd serc-relational-metric
 ```
 
@@ -140,11 +140,10 @@ Feel free to open issues or submit pull requests.
 
 ## 🌐 Links
 
-- Zenodo DOI (coming soon)  
+- Zenodo record: [10.5281/zenodo.18685546](https://doi.org/10.5281/zenodo.18685546) (version v0.1.0: [10.5281/zenodo.18685547](https://doi.org/10.5281/zenodo.18685547))  
 - OSF Preprint (coming soon)  
 - ResearchGate project page (optional)  
 
 ---
 
 SERC is an open research effort — your feedback and collaboration are appreciated.
-```
